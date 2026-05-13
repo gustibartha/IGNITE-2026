@@ -1,6 +1,7 @@
 import { db } from "@/lib/db";
 import { ideas } from "@/lib/db/schema";
 import { desc } from "drizzle-orm";
+import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { 
   Zap, 
