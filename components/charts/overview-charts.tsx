@@ -108,9 +108,10 @@ export function DoughnutChart({ data, className }: { data: any[], className?: st
               paddingAngle={8}
               dataKey="value"
               stroke="none"
+              cornerRadius={10}
             >
               {displayData.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} cornerRadius={10} />
+                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
               ))}
             </Pie>
             <Tooltip 
