@@ -182,15 +182,15 @@ export default function SubmitIdeaPage() {
   }
 
   return (
-    <div className="max-w-4xl mx-auto space-y-10 animate-in fade-in slide-in-from-bottom-8 duration-700 pb-20">
-      <div className="flex items-center gap-6">
-        <div className="h-20 w-20 rounded-[2rem] bg-indigo-600 flex items-center justify-center shadow-2xl shadow-indigo-200">
-          <Zap className="h-10 w-10 text-white fill-white" />
+    <div className="max-w-4xl mx-auto space-y-6 md:space-y-10 animate-in fade-in slide-in-from-bottom-8 duration-700 pb-20 px-3">
+      <div className="flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-6 text-center md:text-left">
+        <div className="h-14 w-14 md:h-20 md:w-20 rounded-xl md:rounded-[2rem] bg-indigo-600 flex items-center justify-center shadow-2xl shadow-indigo-200 shrink-0">
+          <Zap className="h-6 w-6 md:h-10 md:w-10 text-white fill-white" />
         </div>
         <div>
-          <h1 className="text-4xl font-black tracking-tighter text-slate-900 uppercase">Submit Innovation</h1>
-          <p className="text-slate-500 font-medium mt-1">
-            Bagikan ide kreatif Anda untuk membantu UP Muara Karang menjadi garda terdepan inovasi kelistrikan di IGNITE 2026.
+          <h1 className="text-xl md:text-4xl font-black tracking-tighter text-slate-900 uppercase">Submit Innovation</h1>
+          <p className="text-slate-500 font-medium mt-1 text-xs md:text-base">
+            Bagikan ide kreatif Anda untuk membantu UP Muara Karang.
           </p>
         </div>
       </div>
@@ -198,15 +198,15 @@ export default function SubmitIdeaPage() {
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
           {/* Section 1: Data Diri */}
-          <div className="glass-card p-10 rounded-[2.5rem] space-y-8">
+          <div className="glass-card p-5 md:p-10 rounded-[1.5rem] md:rounded-[2.5rem] space-y-6 md:space-y-8">
             <div className="flex items-center gap-3 mb-2">
                <div className="h-8 w-8 rounded-xl bg-indigo-50 flex items-center justify-center">
                   <User className="h-4 w-4 text-indigo-600" />
                </div>
-               <h3 className="text-xl font-bold text-slate-900">Data Pengirim</h3>
+               <h3 className="text-base md:text-xl font-bold text-slate-900">Data Pengirim</h3>
             </div>
             
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
               <FormField
                 control={form.control}
                 name="nid"
@@ -315,12 +315,12 @@ export default function SubmitIdeaPage() {
           </div>
 
           {/* Section 2: Detail Inovasi */}
-          <div className="glass-card p-10 rounded-[2.5rem] space-y-8">
+          <div className="glass-card p-5 md:p-10 rounded-[1.5rem] md:rounded-[2.5rem] space-y-6 md:space-y-8">
             <div className="flex items-center gap-3 mb-2">
                <div className="h-8 w-8 rounded-xl bg-teal-50 flex items-center justify-center">
                   <Layers className="h-4 w-4 text-teal-600" />
                </div>
-               <h3 className="text-xl font-bold text-slate-900">Detail Inovasi</h3>
+               <h3 className="text-base md:text-xl font-bold text-slate-900">Detail Inovasi</h3>
             </div>
 
             <FormField
@@ -447,12 +447,12 @@ export default function SubmitIdeaPage() {
           </div>
 
           {/* Section 3: Analisis & Dampak */}
-          <div className="glass-card p-10 rounded-[2.5rem] space-y-8">
+          <div className="glass-card p-5 md:p-10 rounded-[1.5rem] md:rounded-[2.5rem] space-y-6 md:space-y-8">
             <div className="flex items-center gap-3 mb-2">
                <div className="h-8 w-8 rounded-xl bg-amber-50 flex items-center justify-center">
                   <CheckCircle2 className="h-4 w-4 text-amber-600" />
                </div>
-               <h3 className="text-xl font-bold text-slate-900">Manfaat & Dampak</h3>
+               <h3 className="text-base md:text-xl font-bold text-slate-900">Manfaat & Dampak</h3>
             </div>
 
             <FormField
@@ -491,7 +491,7 @@ export default function SubmitIdeaPage() {
               )}
             />
             
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6">
                <input 
                   type="file" 
                   ref={resikoRef} 
@@ -518,7 +518,7 @@ export default function SubmitIdeaPage() {
 
                <div 
                   onClick={() => resikoRef.current?.click()}
-                  className="p-6 rounded-[2rem] border-2 border-dashed border-slate-100 flex flex-col items-center justify-center text-center space-y-2 bg-slate-50/30 group hover:border-indigo-200 hover:bg-indigo-50/10 transition-all cursor-pointer"
+                  className="p-5 md:p-6 rounded-[1.5rem] md:rounded-[2rem] border-2 border-dashed border-slate-100 flex flex-col items-center justify-center text-center space-y-2 bg-slate-50/30 group hover:border-indigo-200 hover:bg-indigo-50/10 transition-all cursor-pointer"
                >
                   <div className="h-10 w-10 rounded-full bg-white shadow-sm flex items-center justify-center mb-2">
                      <Upload className="h-5 w-5 text-slate-400 group-hover:text-indigo-600" />
@@ -557,11 +557,11 @@ export default function SubmitIdeaPage() {
             </div>
           </div>
 
-          <div className="flex items-center justify-end gap-4 pt-4">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-end gap-4 pt-4">
             <Button 
               type="button" 
               variant="ghost" 
-              className="h-14 px-8 rounded-2xl font-bold text-slate-500 hover:bg-slate-50"
+              className="h-12 md:h-14 px-8 rounded-xl md:rounded-2xl font-bold text-slate-500 hover:bg-slate-50"
               onClick={() => router.back()}
             >
               Cancel
@@ -569,7 +569,7 @@ export default function SubmitIdeaPage() {
             <Button 
               type="submit" 
               disabled={isPending}
-              className="h-14 px-10 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold shadow-xl shadow-indigo-200 transition-all hover:scale-[1.02] active:scale-[0.98] gap-2"
+              className="h-12 md:h-14 px-10 rounded-xl md:rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold shadow-xl shadow-indigo-200 transition-all hover:scale-[1.02] active:scale-[0.98] gap-2"
             >
               {isPending ? "Mengirim..." : (
                 <>

@@ -27,11 +27,15 @@ const secondaryNavigation = [
   { name: "Support", href: "/support", icon: HelpCircle },
 ];
 
-export function Sidebar() {
+export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
   const pathname = usePathname();
 
+  const handleNavigate = () => {
+    if (onNavigate) onNavigate();
+  };
+
   return (
-    <div className="flex h-full w-64 flex-col bg-[#f8fafc] border-r border-slate-200">
+    <div className="flex h-full w-64 flex-col bg-[#f8fafc] border-r border-slate-200 lg:border-r-0 lg:w-full">
       <div className="flex h-20 items-center gap-3 px-6">
         <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-900 shadow-lg shadow-slate-900/20">
           <Zap className="h-6 w-6 text-white" fill="currentColor" />
@@ -43,7 +47,7 @@ export function Sidebar() {
       </div>
 
       <div className="px-4 py-4">
-        <Link href="/submit">
+        <Link href="/submit" onClick={handleNavigate}>
           <Button className="w-full bg-slate-900 hover:bg-slate-800 text-white font-semibold h-11 shadow-sm transition-all hover:scale-[1.02] active:scale-[0.98]">
             <Plus className="mr-2 h-4 w-4" /> New Submission
           </Button>
@@ -57,6 +61,7 @@ export function Sidebar() {
             <Link
               key={item.name}
               href={item.href}
+              onClick={handleNavigate}
               className={cn(
                 "group flex items-center rounded-xl px-3 py-2.5 text-sm font-semibold transition-all duration-200",
                 isActive 
@@ -84,6 +89,7 @@ export function Sidebar() {
           <Link
             key={item.name}
             href={item.href}
+            onClick={handleNavigate}
             className="group flex items-center rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-500 hover:bg-slate-100/50 hover:text-slate-900 transition-all"
           >
             <item.icon className="mr-3 h-5 w-5 text-slate-400 group-hover:text-slate-600" />

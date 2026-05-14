@@ -59,20 +59,20 @@ export default async function DashboardOverview() {
 
   return (
     <div className="space-y-10 animate-in fade-in slide-in-from-bottom-4 duration-1000 pb-20">
-      <div className="relative overflow-hidden rounded-[3rem] bg-slate-900 p-12 text-white shadow-2xl shadow-indigo-500/20 group">
+      <div className="relative overflow-hidden rounded-[1.5rem] md:rounded-[3rem] bg-slate-900 p-5 md:p-12 text-white shadow-2xl shadow-indigo-500/20 group">
         <div className="absolute top-0 right-0 w-full h-full opacity-20 pointer-events-none">
-          <div className="absolute -top-24 -right-24 w-96 h-96 bg-indigo-500 rounded-full blur-[100px] animate-pulse" />
+          <div className="absolute -top-24 -right-24 w-48 h-48 md:w-96 md:h-96 bg-indigo-500 rounded-full blur-[60px] md:blur-[100px] animate-pulse" />
           <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-teal-500/30 to-transparent" />
         </div>
         
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-8">
           <div className="space-y-3">
-            <Badge variant="outline" className="border-indigo-400/50 text-indigo-300 font-bold px-3 py-1 bg-indigo-500/10 backdrop-blur-md">IGNITE 2026 EDITION</Badge>
-            <h1 className="text-5xl font-black tracking-tight leading-[1.1]">
+            <Badge variant="outline" className="border-indigo-400/50 text-indigo-300 font-bold px-3 py-1 bg-indigo-500/10 backdrop-blur-md text-[9px] md:text-xs">IGNITE 2026 EDITION</Badge>
+            <h1 className="text-2xl md:text-5xl font-black tracking-tight leading-[1.1]">
               Innovation <span className="text-indigo-400">Dashboard</span>
             </h1>
-            <p className="text-slate-400 font-medium text-lg max-w-lg">
-              Driving the future of UP Muara Karang through collective intelligence and groundbreaking ideas.
+            <p className="text-slate-400 font-medium text-sm md:text-lg max-w-lg">
+              Driving the future of UP Muara Karang through collective intelligence.
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-4">
@@ -87,7 +87,7 @@ export default async function DashboardOverview() {
       </div>
 
       {/* Innovation Formasi Metrics */}
-      <div className="grid gap-8 md:grid-cols-4">
+      <div className="grid gap-6 md:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
         <MetricCard 
           title="Target Inovasi (Ideal)" 
           value="500" 
@@ -126,26 +126,26 @@ export default async function DashboardOverview() {
         />
       </div>
 
-      <div className="grid gap-8 lg:grid-cols-7">
+      <div className="grid gap-8 grid-cols-1 lg:grid-cols-7">
         <UnitDistributionChart data={bidangChartData} className="lg:col-span-4" />
         <DoughnutChart data={chartData} className="lg:col-span-3" />
       </div>
 
       {/* Recent Submissions Table */}
-      <div className="grid gap-8 lg:grid-cols-3">
-        <Card className="lg:col-span-2 border-none shadow-2xl shadow-slate-200/50 rounded-[3rem] overflow-hidden bg-white/80 backdrop-blur-xl">
-          <CardHeader className="flex flex-row items-center justify-between border-b border-slate-100 p-10">
+      <div className="grid gap-8 grid-cols-1 lg:grid-cols-3">
+        <Card className="lg:col-span-2 border-none shadow-2xl shadow-slate-200/50 rounded-[1.5rem] md:rounded-[3rem] overflow-hidden bg-white/80 backdrop-blur-xl">
+          <CardHeader className="flex flex-col sm:flex-row items-start sm:items-center justify-between border-b border-slate-100 p-5 md:p-10 gap-4">
             <div>
-              <CardTitle className="text-3xl font-black text-slate-900 tracking-tight">Recent Ideas</CardTitle>
-              <CardDescription className="font-semibold text-slate-400 text-base">Latest contributions to the innovation hub.</CardDescription>
+              <CardTitle className="text-xl md:text-3xl font-black text-slate-900 tracking-tight">Recent Ideas</CardTitle>
+              <CardDescription className="font-semibold text-slate-400 text-xs md:text-base">Latest contributions.</CardDescription>
             </div>
-            <Link href="/board">
-              <Button variant="outline" className="rounded-2xl h-12 border-slate-200 font-bold text-slate-500 hover:bg-slate-50 hover:text-indigo-600">
+            <Link href="/board" className="w-full sm:w-auto">
+              <Button variant="outline" className="w-full sm:w-auto rounded-xl md:rounded-2xl h-10 md:h-12 border-slate-200 font-bold text-slate-500 hover:bg-slate-50 hover:text-indigo-600 text-xs md:text-sm">
                 View Gallery
               </Button>
             </Link>
           </CardHeader>
-          <CardContent className="p-0">
+          <CardContent className="p-0 overflow-x-auto">
             <Table>
               <TableHeader className="bg-slate-50/30">
                 <TableRow className="border-none">
@@ -268,13 +268,13 @@ function MetricCard({ title, value, change, trend, icon: Icon, iconBg, color }: 
 
   return (
     <Card className={cn(
-      "border border-slate-100 shadow-2xl shadow-slate-100 rounded-[2.5rem] overflow-hidden p-10 bg-white transition-all duration-500 group",
+      "border border-slate-100 shadow-2xl shadow-slate-100 rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden p-5 md:p-10 bg-white transition-all duration-500 group",
       colorMap[color]
     )}>
-      <div className="flex items-start justify-between">
-        <div className="space-y-4">
-          <p className="text-[11px] font-black text-slate-400 uppercase tracking-[0.25em]">{title}</p>
-          <h3 className="text-5xl font-black text-slate-950 group-hover:scale-105 origin-left transition-transform duration-500 tracking-tighter">{value}</h3>
+      <div className="flex flex-row items-start justify-between gap-4">
+        <div className="space-y-4 w-full">
+          <p className="text-[9px] md:text-[11px] font-black text-slate-400 uppercase tracking-[0.25em]">{title}</p>
+          <h3 className="text-3xl md:text-5xl font-black text-slate-950 group-hover:scale-105 origin-left transition-transform duration-500 tracking-tighter">{value}</h3>
           <div className="flex items-center gap-2 pt-2">
              <div className={cn(
                "h-2 w-2 rounded-full",
@@ -288,8 +288,8 @@ function MetricCard({ title, value, change, trend, icon: Icon, iconBg, color }: 
              </span>
           </div>
         </div>
-        <div className={cn("p-5 rounded-[1.75rem] shadow-xl shadow-slate-200 transition-all group-hover:-translate-y-2 duration-500", iconBg)}>
-          <Icon className="h-8 w-8" />
+        <div className={cn("p-4 md:p-5 rounded-xl md:rounded-[1.75rem] shadow-xl shadow-slate-200 transition-all group-hover:-translate-y-2 duration-500 shrink-0", iconBg)}>
+          <Icon className="h-6 w-6 md:h-8 md:w-8" />
         </div>
       </div>
     </Card>

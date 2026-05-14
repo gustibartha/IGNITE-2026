@@ -19,10 +19,10 @@ export default async function TimelinePage() {
   });
 
   return (
-    <div className="max-w-4xl mx-auto space-y-12 animate-in fade-in duration-1000 pb-20">
+    <div className="max-w-4xl mx-auto space-y-8 md:space-y-12 animate-in fade-in duration-1000 pb-20 px-2">
       <div className="text-center space-y-3">
-        <h1 className="text-5xl font-black tracking-tighter text-slate-900">Innovation Timeline</h1>
-        <p className="text-slate-500 font-medium text-lg">Journey of ideas from concept to reality.</p>
+        <h1 className="text-3xl md:text-5xl font-black tracking-tighter text-slate-900">Innovation Timeline</h1>
+        <p className="text-slate-500 font-medium text-sm md:text-lg">Journey of ideas from concept to reality.</p>
       </div>
 
       <div className="relative">
@@ -47,8 +47,8 @@ export default async function TimelinePage() {
               </div>
 
               {/* Content Card */}
-              <div className="w-full md:w-[45%] pl-12 md:pl-0">
-                <div className="group bg-white p-8 rounded-[2.5rem] shadow-xl shadow-slate-100 border border-slate-100 transition-all hover:scale-[1.02] hover:shadow-2xl">
+              <div className="w-full md:w-[45%] pl-10 md:pl-0">
+                <div className="group bg-white p-6 md:p-8 rounded-[2rem] md:rounded-[2.5rem] shadow-xl shadow-slate-100 border border-slate-100 transition-all hover:scale-[1.02] hover:shadow-2xl">
                   <div className="flex items-center gap-3 mb-4">
                     <Badge className="bg-indigo-50 text-indigo-600 border-none font-black text-[10px] px-3 py-1">
                       {inv.status}
