@@ -40,15 +40,22 @@ export default async function IdeaDetailPage({ params }: { params: Promise<{ id:
             <ArrowLeft className="h-4 w-4" /> Kembali
           </Button>
         </Link>
-        <Badge className={cn(
-          "rounded-full px-4 py-1.5 font-bold text-xs uppercase tracking-widest border-none shadow-sm",
-          idea.status === "Submitted" ? "bg-indigo-50 text-indigo-600" :
-          idea.status === "Review" ? "bg-amber-50 text-amber-600" :
-          idea.status === "Approved" ? "bg-emerald-50 text-emerald-600" :
-          "bg-slate-50 text-slate-600"
-        )}>
-          {idea.status}
-        </Badge>
+        <div className="flex items-center gap-3">
+          <Link href={`/edit/${idea.id}`}>
+            <Button variant="outline" className="rounded-full px-4 py-1.5 font-bold text-xs shadow-sm border-slate-200 text-slate-600 hover:text-indigo-600 hover:bg-indigo-50 gap-2 h-auto">
+              Edit Inovasi
+            </Button>
+          </Link>
+          <Badge className={cn(
+            "rounded-full px-4 py-1.5 font-bold text-xs uppercase tracking-widest border-none shadow-sm",
+            idea.status === "Submitted" ? "bg-indigo-50 text-indigo-600" :
+            idea.status === "Review" ? "bg-amber-50 text-amber-600" :
+            idea.status === "Approved" ? "bg-emerald-50 text-emerald-600" :
+            "bg-slate-50 text-slate-600"
+          )}>
+            {idea.status}
+          </Badge>
+        </div>
       </div>
 
       <div className="space-y-4">
