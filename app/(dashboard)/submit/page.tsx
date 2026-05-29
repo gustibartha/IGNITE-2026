@@ -492,72 +492,63 @@ export default function SubmitIdeaPage() {
             />
             
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6">
-               <div className="relative h-full">
+               <div className="relative h-full group">
                  <input 
                     type="file" 
-                    id="resiko-upload"
-                    className="hidden" 
                     accept=".pdf"
                     onChange={(e) => handleFileChange(e, 'resiko')}
                     multiple
+                    className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
+                    title="Upload Analisa Resiko"
                  />
-                 <label 
-                    htmlFor="resiko-upload"
-                    className="p-5 md:p-6 rounded-[1.5rem] md:rounded-[2rem] border-2 border-dashed border-slate-100 flex flex-col items-center justify-center text-center space-y-2 bg-slate-50/30 group hover:border-indigo-200 hover:bg-indigo-50/10 transition-all cursor-pointer h-full"
-                 >
+                 <div className="p-5 md:p-6 rounded-[1.5rem] md:rounded-[2rem] border-2 border-dashed border-slate-200 flex flex-col items-center justify-center text-center space-y-2 bg-slate-50/50 group-hover:border-indigo-300 group-hover:bg-indigo-50 transition-all h-full pointer-events-none">
                     <div className="h-10 w-10 rounded-full bg-white shadow-sm flex items-center justify-center mb-2">
-                       <Upload className="h-5 w-5 text-slate-400 group-hover:text-indigo-600" />
+                       <Upload className="h-5 w-5 text-slate-400 group-hover:text-indigo-600 transition-colors" />
                     </div>
-                    <p className="text-xs font-bold text-slate-500 group-hover:text-indigo-600">Analisa Resiko</p>
+                    <p className="text-xs font-bold text-slate-600 group-hover:text-indigo-700">Analisa Resiko</p>
                     <p className="text-[10px] text-slate-400">
                       {files.resiko.length > 0 ? `${files.resiko.length} files selected` : "Max 5 files (PDF)"}
                     </p>
-                 </label>
+                 </div>
                </div>
 
-               <div className="relative h-full">
+               <div className="relative h-full group">
                  <input 
                     type="file" 
-                    id="foto-upload"
-                    className="hidden" 
                     accept="image/*"
                     onChange={(e) => handleFileChange(e, 'foto')}
                     multiple
+                    className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
+                    title="Upload Foto Inovasi"
                  />
-                 <label 
-                    htmlFor="foto-upload"
-                    className="p-6 rounded-[2rem] border-2 border-dashed border-slate-100 flex flex-col items-center justify-center text-center space-y-2 bg-slate-50/30 group hover:border-teal-200 hover:bg-teal-50/10 transition-all cursor-pointer h-full"
-                 >
+                 <div className="p-5 md:p-6 rounded-[1.5rem] md:rounded-[2rem] border-2 border-dashed border-slate-200 flex flex-col items-center justify-center text-center space-y-2 bg-slate-50/50 group-hover:border-teal-300 group-hover:bg-teal-50 transition-all h-full pointer-events-none">
                     <div className="h-10 w-10 rounded-full bg-white shadow-sm flex items-center justify-center mb-2">
-                       <Upload className="h-5 w-5 text-slate-400 group-hover:text-teal-600" />
+                       <Upload className="h-5 w-5 text-slate-400 group-hover:text-teal-600 transition-colors" />
                     </div>
-                    <p className="text-xs font-bold text-slate-500 group-hover:text-teal-600">Foto Inovasi</p>
+                    <p className="text-xs font-bold text-slate-600 group-hover:text-teal-700">Foto Inovasi</p>
                     <p className="text-[10px] text-slate-400">
                       {files.foto.length > 0 ? `${files.foto.length} files selected` : "Max 5 files (JPG, PNG)"}
                     </p>
-                 </label>
+                 </div>
                </div>
 
-               <div className="relative h-full">
+               <div className="relative h-full group">
                  <input 
                     type="file" 
-                    id="ecp-upload"
-                    className="hidden" 
                     accept=".pdf"
                     onChange={(e) => handleFileChange(e, 'ecp')}
+                    className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
+                    title="Upload ECP"
                  />
-                 <label 
-                    htmlFor="ecp-upload"
-                    className="p-6 rounded-[2rem] border-2 border-dashed border-slate-100 flex flex-col items-center justify-center text-center space-y-2 bg-slate-50/30 group hover:border-rose-200 hover:bg-rose-50/10 transition-all cursor-pointer h-full"
-                 >
+                 <div className="p-5 md:p-6 rounded-[1.5rem] md:rounded-[2rem] border-2 border-dashed border-slate-200 flex flex-col items-center justify-center text-center space-y-2 bg-slate-50/50 group-hover:border-rose-300 group-hover:bg-rose-50 transition-all h-full pointer-events-none">
                     <div className="h-10 w-10 rounded-full bg-white shadow-sm flex items-center justify-center mb-2">
-                       <Upload className="h-5 w-5 text-slate-400 group-hover:text-rose-600" />
+                       <Upload className="h-5 w-5 text-slate-400 group-hover:text-rose-600 transition-colors" />
                     </div>
-                    <p className="text-xs font-bold text-slate-500 group-hover:text-rose-600 uppercase">Upload ECP</p>
+                    <p className="text-xs font-bold text-slate-600 group-hover:text-rose-700 uppercase">Upload ECP</p>
                     <p className="text-[10px] text-slate-400">
                       {files.ecp.length > 0 ? files.ecp[0].name : "Jika Ada (PDF)"}
                     </p>
-                 </label>
+                 </div>
                </div>
             </div>
           </div>
