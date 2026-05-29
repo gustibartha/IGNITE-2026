@@ -1,7 +1,8 @@
 "use server";
 
 import { db } from "@/lib/db";
-import { ideas } from "@/lib/db/schema";
+import { ideas, users } from "@/lib/db/schema";
+import { eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { getSession } from "@/lib/actions/auth";
 import { supabase } from "@/lib/supabase";
