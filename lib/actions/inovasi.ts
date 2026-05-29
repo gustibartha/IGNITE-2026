@@ -31,9 +31,13 @@ export async function createIdea(formData: FormData) {
       const fileName = `${Date.now()}-${Math.random().toString(36).substring(2)}.${fileExt}`;
       const filePath = `${userId}/${fileName}`;
 
+      const arrayBuffer = await file.arrayBuffer();
+      const buffer = Buffer.from(arrayBuffer);
+
       const { data, error } = await supabase.storage
         .from(bucket)
-        .upload(filePath, file, {
+        .upload(filePath, buffer, {
+          contentType: file.type,
           cacheControl: '3600',
           upsert: false
         });
@@ -89,8 +93,8 @@ export async function createIdea(formData: FormData) {
     revalidatePath("/");
     revalidatePath("/board");
     return { success: true };
-  } catch (error) {
+  } catch (error: any) {
     console.error("Failed to create idea:", error);
-    return { success: false, error: "Gagal menyimpan ide inovasi ke sistem cloud." };
+    return { success: false, error: `Error: ${error.message || error.toString()}` };
   }
 }
