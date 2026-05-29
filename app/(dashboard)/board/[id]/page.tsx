@@ -58,7 +58,14 @@ export default async function IdeaDetailPage({ params }: { params: Promise<{ id:
         </div>
       </div>
 
-      <div className="space-y-4">
+      {idea.fotoInovasi && (
+        <div className="w-full aspect-[21/9] md:aspect-[3/1] overflow-hidden rounded-[2rem] md:rounded-[3rem] shadow-2xl relative mb-12">
+          <img src={idea.fotoInovasi} alt={idea.judul} className="w-full h-full object-cover transition-transform duration-1000 hover:scale-105" />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent pointer-events-none" />
+        </div>
+      )}
+
+      <div className="space-y-4 mt-8">
         <div className="flex flex-wrap items-center gap-2 md:gap-3">
            <Badge variant="secondary" className="bg-indigo-100 text-indigo-700 rounded-lg px-2 py-0.5 text-[9px] md:text-[10px] font-black uppercase">{idea.bidang}</Badge>
            <Badge variant="secondary" className="bg-teal-100 text-teal-700 rounded-lg px-2 py-0.5 text-[9px] md:text-[10px] font-black uppercase">{idea.kategoriInovasi}</Badge>
@@ -176,12 +183,35 @@ export default async function IdeaDetailPage({ params }: { params: Promise<{ id:
             <div className="pt-6 border-t border-slate-100 space-y-3">
                <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">Dokumen Pendukung</p>
                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-2">
-                 <Button variant="outline" className="w-full justify-start rounded-xl border-slate-100 font-bold text-xs h-10 gap-2 hover:bg-slate-50 overflow-hidden">
-                    <FileText className="h-3.5 w-3.5 text-rose-500" /> <span className="truncate">Analisa Resiko.pdf</span>
-                 </Button>
-                 <Button variant="outline" className="w-full justify-start rounded-xl border-slate-100 font-bold text-xs h-10 gap-2 hover:bg-slate-50 overflow-hidden">
-                    <FileText className="h-3.5 w-3.5 text-blue-500" /> <span className="truncate">ECP Inovasi.pdf</span>
-                 </Button>
+                 {idea.analisaResiko ? (
+                   <a href={idea.analisaResiko} target="_blank" rel="noopener noreferrer" className="w-full">
+                     <Button variant="outline" className="w-full justify-start rounded-xl border-slate-100 font-bold text-xs h-10 gap-2 hover:bg-slate-50 overflow-hidden shadow-sm hover:border-rose-200 hover:shadow-rose-500/10 transition-all">
+                        <FileText className="h-3.5 w-3.5 text-rose-500" /> <span className="truncate">Analisa Resiko.pdf</span>
+                     </Button>
+                   </a>
+                 ) : (
+                   <div className="flex items-center gap-2 text-xs font-medium text-slate-400 px-3 py-2 bg-slate-50 rounded-xl border border-dashed border-slate-200">
+                     <FileText className="h-3.5 w-3.5 opacity-50" /> Analisa Resiko Tidak Ada
+                   </div>
+                 )}
+                 {idea.ecp ? (
+                   <a href={idea.ecp} target="_blank" rel="noopener noreferrer" className="w-full">
+                     <Button variant="outline" className="w-full justify-start rounded-xl border-slate-100 font-bold text-xs h-10 gap-2 hover:bg-slate-50 overflow-hidden shadow-sm hover:border-blue-200 hover:shadow-blue-500/10 transition-all">
+                        <FileText className="h-3.5 w-3.5 text-blue-500" /> <span className="truncate">ECP Inovasi.pdf</span>
+                     </Button>
+                   </a>
+                 ) : (
+                   <div className="flex items-center gap-2 text-xs font-medium text-slate-400 px-3 py-2 bg-slate-50 rounded-xl border border-dashed border-slate-200">
+                     <FileText className="h-3.5 w-3.5 opacity-50" /> ECP Tidak Dilampirkan
+                   </div>
+                 )}
+                 {idea.fotoInovasi && (
+                   <a href={idea.fotoInovasi} target="_blank" rel="noopener noreferrer" className="w-full">
+                     <Button variant="outline" className="w-full justify-start rounded-xl border-slate-100 font-bold text-xs h-10 gap-2 hover:bg-slate-50 overflow-hidden shadow-sm hover:border-emerald-200 hover:shadow-emerald-500/10 transition-all">
+                        <FileText className="h-3.5 w-3.5 text-emerald-500" /> <span className="truncate">Foto / Gambar Inovasi</span>
+                     </Button>
+                   </a>
+                 )}
                </div>
             </div>
           </div>
