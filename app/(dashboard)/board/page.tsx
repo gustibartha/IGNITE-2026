@@ -17,7 +17,8 @@ import {
   ArrowRight,
   Clock,
   Zap,
-  Lightbulb
+  Lightbulb,
+  Edit2
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -129,13 +130,18 @@ export default async function BoardPage() {
                   </div>
                 </div>
 
-                <div className="pt-2">
-                  <Link href={`/board/${idea.id}`}>
-                    <Button className="w-full h-11 md:h-14 rounded-xl md:rounded-2xl bg-slate-50 hover:bg-indigo-600 text-slate-900 hover:text-white font-black transition-all gap-2 group/btn border border-slate-100 hover:border-indigo-600 shadow-sm text-xs md:text-base">
-                      LIHAT DETAIL
-                      <ArrowRight className="h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
-                    </Button>
-                  </Link>
+                <div className="pt-2 grid grid-cols-2 gap-2">
+                   <Link href={`/edit/${idea.id}`}>
+                     <Button variant="outline" className="w-full h-11 md:h-14 rounded-xl md:rounded-2xl font-black transition-all gap-2 text-xs md:text-sm text-slate-500 hover:text-indigo-600 border-slate-200">
+                        <Edit2 className="h-4 w-4" /> EDIT
+                     </Button>
+                   </Link>
+                   <Link href={`/board/${idea.id}`}>
+                     <Button className="w-full h-11 md:h-14 rounded-xl md:rounded-2xl bg-indigo-50 hover:bg-indigo-600 text-indigo-700 hover:text-white font-black transition-all gap-2 group/btn border-none shadow-sm text-xs md:text-sm">
+                        DETAIL 
+                        <ArrowRight className="h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
+                     </Button>
+                   </Link>
                 </div>
               </CardContent>
             </Card>
