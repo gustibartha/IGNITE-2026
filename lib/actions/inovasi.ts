@@ -8,11 +8,20 @@ import { supabase } from "@/lib/supabase";
 
 export async function createIdea(formData: FormData) {
   try {
-    const session = await getSession();
-    if (!session) {
-      return { success: false, error: "Sesi Anda telah berakhir. Silakan login kembali." };
+    // Since the system is now open for internal use without login, we bypass the session check.
+    // We will use a default "Anonymous" user or create one if it doesn't exist to satisfy the foreign key constraint.
+    let defaultUser = await db.query.users.findFirst({
+      where: eq(users.email, "anonymous@ignite2026.internal"),
+    });
+
+    if (!defaultUser) {
+      const [newUser] = await db.insert(users).values({
+        name: "Anonymous User",
+        email: "anonymous@ignite2026.internal",
+      }).returning();
+      defaultUser = newUser;
     }
-    const userId = session.id;
+    const userId = defaultUser.id;
 
     const uploadFileToSupabase = async (file: File | null, bucket: string) => {
       if (!file || file.size === 0) return null;

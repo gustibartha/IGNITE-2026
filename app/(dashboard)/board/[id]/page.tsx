@@ -21,9 +21,11 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
-export default async function IdeaDetailPage({ params }: { params: { id: string } }) {
+export default async function IdeaDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const resolvedParams = await params;
+  
   const idea = await db.query.ideas.findFirst({
-    where: eq(ideas.id, params.id),
+    where: eq(ideas.id, resolvedParams.id),
   });
 
   if (!idea) {
