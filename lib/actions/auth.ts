@@ -9,12 +9,17 @@ export async function login(email: string) {
   try {
     // In this simple version, we just check if the email exists.
     // For production, you should use Better Auth or similar with password hashing.
-    const user = await db.query.users.findFirst({
+    let user = await db.query.users.findFirst({
       where: eq(users.email, email),
     });
 
+    // Automatically register the user if they don't exist (since this is an internal app)
     if (!user) {
-      return { success: false, error: "User tidak ditemukan." };
+      const [newUser] = await db.insert(users).values({
+        name: email.split("@")[0],
+        email: email,
+      }).returning();
+      user = newUser;
     }
 
     // Set a simple cookie as a session
