@@ -35,6 +35,8 @@ import { ideas } from "@/lib/db/schema";
 import Link from "next/link";
 import { ExportButton } from "@/components/dashboard/export-button";
 
+export const dynamic = "force-dynamic";
+
 export default async function DashboardOverview() {
   const dbIdeas = await db.query.ideas.findMany({
     orderBy: (ideas, { desc }) => [desc(ideas.createdAt)],

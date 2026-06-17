@@ -31,9 +31,9 @@ export async function login(email: string) {
     });
 
     return { success: true };
-  } catch (error) {
+  } catch (error: any) {
     console.error("Login failed:", error);
-    return { success: false, error: "Terjadi kesalahan sistem." };
+    return { success: false, error: `Error: ${error.message || error.toString()}` };
   }
 }
 

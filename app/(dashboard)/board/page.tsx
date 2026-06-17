@@ -25,6 +25,8 @@ import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
+export const dynamic = "force-dynamic";
+
 export default async function BoardPage() {
   const dbIdeas = await db.query.ideas.findMany({
     orderBy: (ideas, { desc }) => [desc(ideas.createdAt)],

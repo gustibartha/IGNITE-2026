@@ -13,6 +13,8 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+export const dynamic = "force-dynamic";
+
 export default async function TimelinePage() {
   const dbIdeas = await db.query.ideas.findMany({
     orderBy: [desc(ideas.createdAt)],
